@@ -8,11 +8,7 @@ class Polish < ActiveRecord::Base
       in: ['butter London', 'Essie', 'OPI']
     }
   validates :color_name,
-    presence: true,
-    format: {
-      multiline: true,
-      with: /^[\w.\-]+$/
-    }
+    presence: true
   validates :brand_number,
     presence: true,
     numericality: {
