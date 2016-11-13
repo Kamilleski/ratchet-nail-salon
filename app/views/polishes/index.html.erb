@@ -1,0 +1,28 @@
+<h1>Kamille's Collection</h1>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Brand</th>
+    <th>Color Name</th>
+    <th>Brand Number</th>
+    <th>Color Group</th>
+    <th>Type</th>
+    <th>UPC</th>
+    <th>Hex Color</th>
+    <th>Throw Out</th>
+  </tr>
+
+  <% @polishes.each do |p| %>
+  <tr>
+    <td><%= image_tag("#{p.image_url}", size: '65x140') %></td>
+    <td><%= p.brand_name %></td>
+    <td><%= p.color_name %></td>
+    <td><%= p.brand_number %></td>
+    <td><%= p.color_group %></td>
+    <td><%= p.polish_type %></td>
+    <td><%= p.upc %></td>
+    <td bgcolor="<%= p.hex_color %>"><font color="white"><%= p.hex_color %></font></td>
+    <td><%= button_to "Destroy Polish", polish_path(id: p.id), method: :delete, type: "button" %></td>
+  </tr>
+  <% end %>
+</table>

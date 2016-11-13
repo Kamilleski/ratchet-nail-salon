@@ -1,0 +1,44 @@
+<h1>Add a New Polish</h1>
+<h3>All Fields Required</h3>
+<hr />
+<%= form_for @polish, action: 'create' do |f| %>
+  <div>
+    <%= f.label :brand_name, 'Brand Name' %>
+    <%= f.select :brand_name, @brands, autofocus: true %>
+  </div>
+  <div>
+    <%= f.label :color_name, 'Color Name' %>
+    <%= f.text_field :color_name, autofocus: true, placeholder: "For the Twill of it" %>
+  </div>
+  <div>
+    <%= f.label :brand_number, 'Brand Number' %>
+    <%= f.number_field :brand_number, autofocus: true, placeholder: "702" %>
+  </div>
+  <div>
+    <%= f.label :upc, 'Universal Product Code' %>
+    <%= f.number_field :upc, autofocus: true, placeholder: "095008011059" %>
+  </div>
+  <div>
+    <%= f.label :color_group, 'Color Group' %>
+    <%= f.select :color_group, @color_groups, autofocus: true, placeholder: "Plums" %>
+  </div>
+  <div>
+    <%= f.label :polish_type, 'Type' %>
+    <%= f.select :polish_type, @polish_types, autofocus: true, placeholder: "Metallics" %>
+  </div>
+  <div>
+    <%= f.label :hex_color, 'Hex Color Code' %>
+    <%= f.text_field :hex_color, autofocus: true, placeholder: "#5C565F" %>
+  </div>
+  <div>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, autofocus: true, placeholder: "[insert pablum copywriting here]" %>
+  </div>
+  <div>
+    <%= f.label :image_url, 'Image URL' %>
+    <%= f.text_field :image_url, autofocus: true, placeholder: "http://www.image.jpg" %>
+  </div>
+  <div>
+    <%= f.submit 'Add New Polish' %>
+  </div>
+<% end %>
