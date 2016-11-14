@@ -8,6 +8,11 @@ class PolishesController < ApplicationController
 
   def index
     @polishes = Polish.all
+    @button_strings = ['FTW!', 'are the best', 'are for winners', 'are for beautiful people', '- the best thing since sliced bread', 'brighten up any look', 'are so hot right now', 'look fabulous with your skin tone', 'are perfect for this season', 'are a winning choice', 'command respect']
+  end
+
+  def show
+    @polish = Polish.find(params[:id])
   end
 
   def edit

@@ -1,0 +1,37 @@
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Brand</th>
+    <th>Color Name</th>
+    <th>Brand Number</th>
+    <th>Color Group</th>
+    <th>Type</th>
+    <th>UPC</th>
+    <th>Hex Color</th>
+    <th>Throw Out</th>
+    <th>Fix Details</th>
+  </tr>
+  <% @polishes.each do |p| %>
+    <tr>
+      <td>
+        <% case p.brand_name %>
+        <% when 'butter London' %>
+          <%= image_tag(p.image_url, size: '140x140', alt: "butter London #{p.color_name}") %>
+        <% when 'Essie' %>
+          <%= image_tag("#{p.image_url}", size: '65x140', alt: "Essie #{p.color_name}") %>
+        <% when 'OPI' %>
+          <%= image_tag("#{p.image_url}", size: '57x140', alt: "OPI #{p.color_name}") %>
+        <% end %>
+      </td>
+      <td><%= p.brand_name %></td>
+      <td><%= p.color_name %></td>
+      <td><%= p.brand_number %></td>
+      <td><%= p.color_group %></td>
+      <td><%= p.polish_type %></td>
+      <td><%= p.upc %></td>
+      <td bgcolor="<%= p.hex_color %>"><font color="white"><%= p.hex_color %></font></td>
+      <td><%= button_to "Safe Disposal", polish_path(id: p.id), method: :delete, type: "button" %></td>
+      <td><%= link_to "Touch up with Acetone", edit_polish_path(id: p.id) %></td>
+    </tr>
+  <% end %>
+</table>
