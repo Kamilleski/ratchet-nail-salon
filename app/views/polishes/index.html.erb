@@ -14,7 +14,16 @@
 
   <% @polishes.each do |p| %>
   <tr>
-    <td><%= image_tag("#{p.image_url}", size: '65x140') %></td>
+    <td>
+      <% case p.brand_name %>
+      <% when 'butter London' %>
+        <%= image_tag(p.image_url, size: '140x140') %>
+      <% when 'Essie' %>
+        <%= image_tag("#{p.image_url}", size: '65x140') %>
+      <% when 'OPI' %>
+        <%= image_tag("#{p.image_url}", size: '57x140') %>
+      <% end %>
+    </td>
     <td><%= p.brand_name %></td>
     <td><%= p.color_name %></td>
     <td><%= p.brand_number %></td>

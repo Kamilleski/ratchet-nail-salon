@@ -1,4 +1,15 @@
 class Polish < ActiveRecord::Base
+
+  def height_finder(polish)
+    case polish.brand_name
+    when 'butter London'
+      return "65x65"
+    when 'Essie'
+      return "65x140"
+    when 'OPI'
+    end
+  end
+  
   validates :brand_name,
     presence: true,
     format: {
