@@ -10,6 +10,24 @@ class PolishesController < ApplicationController
     @polishes = Polish.all
   end
 
+  def edit
+    @polish = Polish.find(params[:id])
+    @polish_types = ['Metallics', 'Mattes', 'Effects', 'None']
+    @brands = ['Essie', 'butter London', 'OPI']
+    @color_groups = ['Pinks', 'Neutrals', 'Grays', 'Corals', 'Reds', 'Plums', 'Deeps', 'Blues', 'Greens']
+  end
+
+  def update
+    @polish = Polish.find(params[:id])
+    if @polish.update(polish_params)
+      flash[:notice] = "Successfully updated nail polish"
+      redirect_to polishes_path
+    else
+      Rails.logger.info(@polish.errors.inspect)
+      render :edit
+    end
+  end
+
   def create
     @polish = Polish.new(polish_params)
     @polish_types = ['Metallics', 'Mattes', 'Effects', 'None']

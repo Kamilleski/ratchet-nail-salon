@@ -10,6 +10,7 @@
     <th>UPC</th>
     <th>Hex Color</th>
     <th>Throw Out</th>
+    <th>Fix Details</th>
   </tr>
 
   <% @polishes.each do |p| %>
@@ -31,7 +32,8 @@
     <td><%= p.polish_type %></td>
     <td><%= p.upc %></td>
     <td bgcolor="<%= p.hex_color %>"><font color="white"><%= p.hex_color %></font></td>
-    <td><%= button_to "Destroy Polish", polish_path(id: p.id), method: :delete, type: "button" %></td>
+    <td><%= button_to "Safe Disposal", polish_path(id: p.id), method: :delete, type: "button" %></td>
+    <td><%= link_to "Touch up with Acetone", edit_polish_path(id: p.id) %></td>
   </tr>
   <% end %>
 </table>
