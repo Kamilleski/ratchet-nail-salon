@@ -1,13 +1,17 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-10 col-centered">
     <h1>Kamille's Collection</h1>
+      <%= render 'sort_checkboxes' %>
   </div>
 </div>
+<div>
+
 <div class="card-colums">
   <div class="row">
     <% @polishes.each do |p| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-xlg-4">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-xlg-3">
         <div class="card text-xs-center">
+          <br />
           <% case p.brand_name %>
           <% when 'butter London' %>
             <%= image_tag(p.image_url, size: '140x140', alt: "butter London #{p.color_name}", class: "card-img-top img-responsive center-block") %>

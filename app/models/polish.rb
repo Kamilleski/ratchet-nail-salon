@@ -1,4 +1,9 @@
 class Polish < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search_color_group, :against => {
+    :polishes => [:color_group]
+  }
 
   def height_finder(polish)
     case polish.brand_name
@@ -9,7 +14,7 @@ class Polish < ActiveRecord::Base
     when 'OPI'
     end
   end
-  
+
   validates :brand_name,
     presence: true,
     format: {

@@ -25,6 +25,8 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'sprockets-rails'
 
+gem 'pg_search'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
