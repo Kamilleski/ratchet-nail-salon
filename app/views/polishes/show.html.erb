@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-lg-6 col-sm-8 col-xs-12 col-centered">
-    <div class="panel panel-default center-block polish-show">
-      <div class="panel-body">
-      </div>
-      <div class="row">
-        <div class="col-xs-6 col-centered">
-          <% case @polish.brand_name %>
-          <% when 'butter London' %>
-            <%= image_tag(@polish.image_url, size: '280x280', alt: "butter London #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
-          <% when 'Essie' %>
-            <%= image_tag("#{@polish.image_url}", size: '130x280', alt: "Essie #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
-          <% when 'OPI' %>
-            <%= image_tag("#{@polish.image_url}", size: '115x280', alt: "OPI #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
-          <% end %>
-          <figcaption class="figure-caption text-xs-center"><%= "#{@polish.brand_name} #{@polish.color_name}" %></figcaption>
-        </div>
-        <div class="col-xs-6 col-centered list-group">
-          <span class="list-group-item">
-            <h4 class="list-group-item-heading" style="">Brand Name</h4>
-            <p class="list-group-item-text"><%= @polish.brand_name %></p>
-          </span>
-          <span class="list-group-item">
-            <h4 class="list-group-item-heading">Color</h4>
-            <p class="list-group-item-text"><%= @polish.color_name %></p>
-          </span>
-          <span class="list-group-item">
-            <h4 class="list-group-item-heading">Description</h4>
-            <p class="list-group-item-text"><%= @polish.description %></p>
-          </span>
-          <span class="list-group-item">
-            <h4 class="list-group-item-heading">Color Group</h4>
-            <p class="list-group-item-text"><%= @polish.color_group %></p>
-          </span>
-          <span class="list-group-item">
-            <h4 class="list-group-item-heading">UPC</h4>
-            <p class="list-group-item-text"><%= @polish.upc %></p>
-          </span>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 center-block">
+      <div class="panel panel-default polish-show">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-4">
+              <% case @polish.brand_name %>
+              <% when 'butter London' %>
+                <%= image_tag(@polish.image_url, size: '280x280', alt: "butter London #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
+              <% when 'Essie' %>
+                <%= image_tag("#{@polish.image_url}", size: '130x280', alt: "Essie #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
+              <% when 'OPI' %>
+                <%= image_tag("#{@polish.image_url}", size: '115x280', alt: "OPI #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
+              <% end %>
+              <figcaption class="figure-caption text-xs-center"><%= "#{@polish.brand_name} #{@polish.color_name}" %></figcaption>
+            </div>
+            <div class="col-xs-8 list-group">
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading" style="">Brand Name</h4>
+                <p class="list-group-item-text"><%= @polish.brand_name %></p>
+              </span>
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading">Color</h4>
+                <p class="list-group-item-text"><%= @polish.color_name %></p>
+              </span>
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading">Description</h4>
+                <p class="list-group-item-text"><%= @polish.description %></p>
+              </span>
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading">Color Group</h4>
+                <p class="list-group-item-text"><%= @polish.color_group %></p>
+              </span>
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading">UPC</h4>
+                <p class="list-group-item-text"><%= @polish.upc %></p>
+              </span>
+            </div>
+          </div>
+        </div>      
       </div>
     </div>
   </div>
