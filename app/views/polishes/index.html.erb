@@ -4,21 +4,25 @@
   </div>
 </div>
 <div class="card-colums">
-  <% @polishes.each do |p| %>
-    <div class="card text-xs-center">
-      <% case p.brand_name %>
-      <% when 'butter London' %>
-        <%= image_tag(p.image_url, size: '140x140', alt: "butter London #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-      <% when 'Essie' %>
-        <%= image_tag("#{p.image_url}", size: '65x140', alt: "Essie #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-      <% when 'OPI' %>
-        <%= image_tag("#{p.image_url}", size: '57x140', alt: "OPI #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-      <% end %>
-      <div class="card-block">
-        <h4 class="card-title"><%= "#{p.brand_name} #{p.color_name}" %></h4>
-        <p class="card-text"><%= "#{p.description}" %></p>
-        <a href="<%= polish_path(id: p.id) %>" class="btn btn-primary" style="background-color: <%= p.hex_color %>"><%= "#{p.color_group} #{@button_strings.sample}" %></a>
+  <div class="row">
+    <% @polishes.each do |p| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-xlg-4">
+        <div class="card text-xs-center">
+          <% case p.brand_name %>
+          <% when 'butter London' %>
+            <%= image_tag(p.image_url, size: '140x140', alt: "butter London #{p.color_name}", class: "card-img-top img-responsive center-block") %>
+          <% when 'Essie' %>
+            <%= image_tag("#{p.image_url}", size: '65x140', alt: "Essie #{p.color_name}", class: "card-img-top img-responsive center-block") %>
+          <% when 'OPI' %>
+            <%= image_tag("#{p.image_url}", size: '57x140', alt: "OPI #{p.color_name}", class: "card-img-top img-responsive center-block") %>
+          <% end %>
+          <div class="card-block">
+            <h4 class="card-title"><%= "#{p.brand_name} #{p.color_name}" %></h4>
+            <p class="card-text"><%= "#{p.description}" %></p>
+            <a href="<%= polish_path(id: p.id) %>" class="btn btn-primary" style="background-color: <%= p.hex_color %>"><%= "#{p.color_group} #{@button_strings.sample}" %></a>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

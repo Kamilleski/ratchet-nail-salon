@@ -13,9 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-
- td,th {
+td,th {
   text-align: center;
   align-content: center;
 }
@@ -25,15 +23,6 @@
 .polish-show > .panel > img {
   width: 100%;
   height: 100%;
-}
-
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
 }
 
 .center-block {
