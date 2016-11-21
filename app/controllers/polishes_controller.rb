@@ -7,11 +7,27 @@ class PolishesController < ApplicationController
   end
 
   def index
-    @polishes = Polish.all
     @button_strings = ['FTW!', 'are the best', 'are for winners', 'are for beautiful people', ': best thing since sliced bread?', 'brighten up any look', 'are so hot right now', 'look fabulous with your skin tone', 'are perfect for this season', 'are a winning choice', 'command respect', 'work with any nail shape', 'increase productivity', 'are a festive choice', 'enhance any style']
     @polish_types = ['Metallics', 'Mattes', 'Effects', 'None']
     @brands = ['Essie', 'butter London', 'OPI']
     @color_groups = ['Pinks', 'Neutrals', 'Grays', 'Corals', 'Reds', 'Plums', 'Deeps', 'Blues', 'Greens']
+
+    @filterrific = initialize_filterrific(
+      Polish,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Polish.options_for_sorted_by,
+        with_color_group: @color_groups,
+        with_polish_type: @polish_types,
+        with_brand_name: @brands
+      },
+    ) or return
+    @polishes = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

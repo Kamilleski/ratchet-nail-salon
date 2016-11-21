@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 center-block">
+    <div class="col-xs-10 center-block">
       <div class="panel panel-default polish-show">
         <div class="panel-body">
           <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-6">
               <% case @polish.brand_name %>
               <% when 'butter London' %>
                 <%= image_tag(@polish.image_url, size: '280x280', alt: "butter London #{@polish.color_name}", class: "img-responsive center-block figure-img img-fluid rounded") %>
@@ -15,30 +15,33 @@
               <% end %>
               <figcaption class="figure-caption text-xs-center"><%= "#{@polish.brand_name} #{@polish.color_name}" %></figcaption>
             </div>
-            <div class="col-xs-8 list-group">
-              <span class="list-group-item">
-                <h4 class="list-group-item-heading" style="">Brand Name</h4>
-                <p class="list-group-item-text"><%= @polish.brand_name %></p>
-              </span>
-              <span class="list-group-item">
-                <h4 class="list-group-item-heading">Color</h4>
-                <p class="list-group-item-text"><%= @polish.color_name %></p>
-              </span>
-              <span class="list-group-item">
-                <h4 class="list-group-item-heading">Description</h4>
-                <p class="list-group-item-text"><%= @polish.description %></p>
-              </span>
-              <span class="list-group-item">
-                <h4 class="list-group-item-heading">Color Group</h4>
-                <p class="list-group-item-text"><%= @polish.color_group %></p>
-              </span>
-              <span class="list-group-item">
-                <h4 class="list-group-item-heading">UPC</h4>
-                <p class="list-group-item-text"><%= @polish.upc %></p>
-              </span>
+            <br />
+            <div class="col-xs-6">
+              <dl>
+                <div class="container">
+                  <dt class="col-sm-3">Brand Name</dt>
+                  <dd class="col-sm-9"><%= @polish.brand_name %></dd>
+                </div>
+                <div class="container">
+                  <dt class="col-sm-3">Color</dt>
+                  <dd class="col-sm-9"><%= @polish.color_name %></dd>
+                </div>
+                <div class="container">
+                  <dt class="col-sm-3">Description</dt>
+                  <dd class="col-sm-9"><%= @polish.description %></dd>
+                </div>
+                <div class="container">
+                  <dt class="col-sm-3">Color Group</dt>
+                  <dd class="col-sm-9"><%= @polish.color_group %></dd>
+                </div>
+                <div class="container">
+                  <dt class="col-sm-3">UPC</dt>
+                  <dd class="col-sm-9"><%= @polish.upc %></dd>
+                </div>
+              </dl>
             </div>
           </div>
-        </div>      
+        </div>
       </div>
     </div>
   </div>

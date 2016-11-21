@@ -1,32 +1,66 @@
-<div class="row">
-  <div class="col-xs-10 col-centered">
-    <h1>Kamille's Collection</h1>
-      <%= render 'sort_checkboxes' %>
-  </div>
-</div>
-<div>
-
-<div class="card-colums">
-  <div class="row">
-    <% @polishes.each do |p| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-xlg-3">
-        <div class="card text-xs-center">
-          <br />
-          <% case p.brand_name %>
-          <% when 'butter London' %>
-            <%= image_tag(p.image_url, size: '140x140', alt: "butter London #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-          <% when 'Essie' %>
-            <%= image_tag("#{p.image_url}", size: '65x140', alt: "Essie #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-          <% when 'OPI' %>
-            <%= image_tag("#{p.image_url}", size: '57x140', alt: "OPI #{p.color_name}", class: "card-img-top img-responsive center-block") %>
-          <% end %>
-          <div class="card-block">
-            <h4 class="card-title"><%= "#{p.brand_name} #{p.color_name}" %></h4>
-            <p class="card-text"><%= "#{p.description}" %></p>
-            <a href="<%= polish_path(id: p.id) %>" class="btn btn-primary" style="background-color: <%= p.hex_color %>"><%= "#{p.color_group} #{@button_strings.sample}" %></a>
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Kamille's Big Bag of Chemicals</h1>
+    <p>Check out my collection.</p>
+    <p>Click on any card for more information about that polish.</p>
+    <p>Filter and sort by the parameters below.</p>
+    <hr />
+    <div class="row">
+      <%= form_for_filterrific @filterrific, class: "form-inline" do |f| %>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            <label>Search</label>
+            <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+            <%= f.text_field(:search_query, class: 'form-control filterrific-periodically-observed') %>
           </div>
         </div>
-      </div>
-    <% end %>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            Brand
+            <%= f.select(:with_brand_name, @filterrific.select_options[:with_brand_name], { include_blank: '- Any -' }, class: 'form-control', width: "200px") %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            Color Group
+            <%= f.select(:with_color_group, @filterrific.select_options[:with_color_group],{ include_blank: '- Any -' }, class: 'form-control') %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            Polish Type
+            <%= f.select(:with_polish_type, @filterrific.select_options[:with_polish_type], { include_blank: '- Any -' }, class: 'form-control') %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            Sorted by
+            <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-2 col-centered">
+          <div class="form-group">
+            <%= link_to(
+              'Reset filters',
+              reset_filterrific_url,
+            ) %>
+          </div>
+        </div>
+          <%# add an automated spinner to your form when the list is refreshed %>
+        <%= render_filterrific_spinner %>
+      <% end %>
+    </div>
   </div>
+
 </div>
+
+
+<%= render 'polishes/list', polishes: @polishes %>
