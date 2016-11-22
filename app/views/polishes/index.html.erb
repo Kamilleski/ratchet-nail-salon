@@ -64,3 +64,10 @@
 
 
 <%= render 'polishes/list', polishes: @polishes %>
+
+<script>
+<% js = escape_javascript(
+  render(partial: 'polishes/list', locals: { polishes: @polishes })
+) %>
+$("#filterrific_results").html("<%= js %>");
+</script>
